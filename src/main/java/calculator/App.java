@@ -7,6 +7,7 @@ public class App {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         boolean flag = true;
+        int i = 0;
         while (flag) {
             System.out.println("첫 번째 숫자를 입력하세요.");
             int num1 = sc.nextInt();
@@ -37,6 +38,9 @@ public class App {
                     System.out.println("연산자를 잘 못 입력하셨습니다.");
             }
             System.out.println("결과: " + result);
+            int[] resultArr = new int[10];
+            i++;
+            resultArr[i] = result;
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
             String exit = sc.next();
             if (exit.equals("exit")) {
