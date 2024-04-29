@@ -1,15 +1,14 @@
 package calculator;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Scanner;
 
 public class App {
-    private static final int MAX_RESULTS = 10;
-    private static int[] resultArr = new int[MAX_RESULTS];
-    private static int currentIndex = 0;
-    
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         boolean flag = true;
+        Queue<Integer> resultQueue = new LinkedList<>();
 
         while (flag) {
             System.out.println("첫 번째 숫자를 입력하세요.");
@@ -41,25 +40,21 @@ public class App {
                     System.out.println("연산자를 잘 못 입력하셨습니다.");
                 }
             System.out.println("결과: " + result);
-            addResult(result);
+            resultQueue.add(result);
+            System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력시 삭제)");
+            String removeTxt = sc.next();
+            if (removeTxt.equals("remove")) {
+                if (!resultQueue.isEmpty()) {
+                    resultQueue.poll();
+                }
+            }
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
-            String exit = sc.next();
-            if (exit.equals("exit")) {
+            String exitTxt = sc.next();
+            if (exitTxt.equals("exit")) {
                 flag = false;
             }
         }
     }
-    private static void addResult(int result) {
-        if (currentIndex < MAX_RESULTS) {
-            resultArr[currentIndex] = result;
-            currentIndex++;
-        } else {
-            // 배열이 가득 찼을 경우, 이전 값들을 한 칸씩 뒤로 이동
-            for (int i = 0; i < MAX_RESULTS - 1; i++) {
-                resultArr[i] = resultArr[i + 1];
-            }
-            resultArr[MAX_RESULTS - 1] = result; // 마지막 인덱스에 새로운 결과 저장
-        }
-    }
+
 }
 
