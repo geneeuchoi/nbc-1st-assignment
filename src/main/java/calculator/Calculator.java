@@ -4,14 +4,12 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public abstract class Calculator {
-    ArithmeticCalculator arithmeticCalculator;
-    CircleCalculator circleCalculator;
-
     private final Operator addOperator;
     private final Operator subtractOperator;
     private final Operator multiplyOperator;
     private final Operator divideOperator;
     private final Operator modOperator;
+    protected Queue<Double> resultQueue;
 
     public Calculator(Operator addOperator, Operator subtractOperator, Operator multiplyOperator, Operator divideOperator, Operator modOperator) {
         this.addOperator = addOperator;

@@ -1,14 +1,12 @@
 package calculator;
 
-import java.util.LinkedList;
 import java.util.Queue;
 
 public class ArithmeticCalculator extends Calculator{
     private double result = 0;
-    private Queue<Double> resultQueue;
 
     public ArithmeticCalculator(Queue<Double> resultQueue) {
-        super(new AddOperation(), new SubtractOperation(), new MultiplyOperation(), new DivideOperation(), new ModOperator());
+        super(new AddOperation(), new SubtractOperation(), new MultiplyOperation(), new DivideOperation(), new ModOperation());
         this.resultQueue = resultQueue;
         resultQueue.clear();
     }
@@ -31,7 +29,7 @@ public class ArithmeticCalculator extends Calculator{
                 result = mod(num1, num2);
                 break;
             default:
-                System.out.println("연산자를 잘 못 입력하셨습니다.");
+                throw new IllegalArgumentException("연산자를 잘못 입력하셨습니다.");
             }
     }
 
@@ -47,8 +45,8 @@ public class ArithmeticCalculator extends Calculator{
     @Override
     public void inquiryResults(String inquiryTxt) {
         if (inquiryTxt.equals("inquiry")) {
-            for (Double i : resultQueue) {
-                System.out.println(i);
+            for (Double result : resultQueue) {
+                System.out.println(result);
             }
         }
     }

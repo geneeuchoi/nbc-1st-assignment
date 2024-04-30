@@ -53,10 +53,6 @@ public class App {
                     break;
 
 
-
-
-
-
                 case '2':
                     System.out.println("반지름을 입력하세요.");
                     double radius = sc.nextDouble();
@@ -70,13 +66,12 @@ public class App {
                     break;
 
                 default:
-                    System.out.println("잘 못 입력하셨습니다.");
+                    throw new IllegalArgumentException("잘못된 값을 입력하셨습니다.");
+
+
             }
-
-
-
         }
+
+
     }
-
 }
-

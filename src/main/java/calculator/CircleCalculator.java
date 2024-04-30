@@ -9,10 +9,8 @@ public class CircleCalculator extends Calculator{
     //static = 인스턴스마다 공유해서 사용할 수 있도록
     //final = PI값은 변하면 안되므로 사용했다.
 
-    private Queue<Double> resultQueue;
-
     public CircleCalculator (Queue<Double> resultQueue) {
-        super(new AddOperation(), new SubtractOperation(), new MultiplyOperation(), new DivideOperation(), new ModOperator());
+        super(new AddOperation(), new SubtractOperation(), new MultiplyOperation(), new DivideOperation(), new ModOperation());
         this.resultQueue = resultQueue;
         resultQueue.clear();
     }
