@@ -8,7 +8,7 @@ public class ArithmeticCalculator extends Calculator{
     private Queue<Double> resultQueue;
 
     public ArithmeticCalculator(Queue<Double> resultQueue) {
-        super(new AddOperation(), new SubtractOperation(), new MultiplyOperation(), new DivideOperation());
+        super(new AddOperation(), new SubtractOperation(), new MultiplyOperation(), new DivideOperation(), new ModOperator());
         this.resultQueue = resultQueue;
         resultQueue.clear();
     }
@@ -27,9 +27,12 @@ public class ArithmeticCalculator extends Calculator{
             case '/':
                 result = divide(num1, num2);
                 break;
+            case '%':
+                result = mod(num1, num2);
+                break;
             default:
                 System.out.println("연산자를 잘 못 입력하셨습니다.");
-        }
+            }
     }
 
     @Override

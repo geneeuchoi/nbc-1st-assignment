@@ -11,12 +11,14 @@ public abstract class Calculator {
     private final Operator subtractOperator;
     private final Operator multiplyOperator;
     private final Operator divideOperator;
+    private final Operator modOperator;
 
-    public Calculator(Operator addOperator, Operator subtractOperator, Operator multiplyOperator, Operator divideOperator) {
+    public Calculator(Operator addOperator, Operator subtractOperator, Operator multiplyOperator, Operator divideOperator, Operator modOperator) {
         this.addOperator = addOperator;
         this.subtractOperator = subtractOperator;
         this.multiplyOperator = multiplyOperator;
         this.divideOperator = divideOperator;
+        this.modOperator = modOperator;
     }
     public abstract void removeResult(String removeTxt);
     public abstract void inquiryResults(String inquiryTxt);
@@ -36,6 +38,10 @@ public abstract class Calculator {
 
     public double divide(double a, double b) {
         return divideOperator.operate(a, b);
+    }
+
+    public double mod(double a, double b) {
+        return modOperator.operate(a, b);
     }
 }
 

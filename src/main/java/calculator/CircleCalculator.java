@@ -12,7 +12,7 @@ public class CircleCalculator extends Calculator{
     private Queue<Double> resultQueue;
 
     public CircleCalculator (Queue<Double> resultQueue) {
-        super(new AddOperation(), new SubtractOperation(), new MultiplyOperation(), new DivideOperation());
+        super(new AddOperation(), new SubtractOperation(), new MultiplyOperation(), new DivideOperation(), new ModOperator());
         this.resultQueue = resultQueue;
         resultQueue.clear();
     }
