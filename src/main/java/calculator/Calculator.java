@@ -1,5 +1,8 @@
 package calculator;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class Calculator {
     private int result = 0;
     public void calculte(int num1, int num2, char operator) {
@@ -25,6 +28,13 @@ public class Calculator {
         }
     }
 
+    public void removeResult(String removeTxt, Queue<Integer> resultQueue) {
+        if (removeTxt.equals("remove")) {
+            if (!resultQueue.isEmpty()) {
+                resultQueue.poll();
+            }
+        }
+    }
     public int getResult() {
         return result;
     }

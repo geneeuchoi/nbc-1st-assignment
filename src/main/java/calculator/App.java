@@ -31,11 +31,8 @@ public class App {
             //연산결과 확인
             System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력시 삭제)");
             String removeTxt = sc.next();
-            if (removeTxt.equals("remove")) {
-                if (!resultQueue.isEmpty()) {
-                    resultQueue.poll();
-                }
-            }
+            calculator.removeResult(removeTxt, resultQueue);
+
 
 
             //큐에 저장된 연산 결과 조회
