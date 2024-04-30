@@ -21,7 +21,7 @@ public class App {
             char operator = sc.next().charAt(0);
 
             //계산기 호출
-            Calculator calculator = new Calculator();
+            Calculator calculator = new Calculator(resultQueue);
             calculator.calculte(num1, num2, operator);
 
             //결과 호출

@@ -5,6 +5,13 @@ import java.util.Queue;
 
 public class Calculator {
     private int result = 0;
+
+    // 공백 큐 만들기 q.clear
+    public Calculator(Queue<Integer> resultQueue) {
+        resultQueue.clear();
+    }
+
+
     public void calculte(int num1, int num2, char operator) {
         switch (operator) {
             case '+':
