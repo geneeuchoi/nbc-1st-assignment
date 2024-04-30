@@ -35,6 +35,14 @@ public class Calculator {
             }
         }
     }
+
+    public void inquiryResults(String inquiryTxt, Queue<Integer> resultQueue) {
+        if (inquiryTxt.equals("inquiry")) {
+            for (Integer i : resultQueue) {
+                System.out.println(i);
+            }
+        }
+    }
     public int getResult() {
         return result;
     }

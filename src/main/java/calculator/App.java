@@ -38,11 +38,7 @@ public class App {
             //큐에 저장된 연산 결과 조회
             System.out.println("저장된 연산 결과를 조회하시겠습니까?(inquiry 입력 시 조회");
             String inquiryTxt = sc.next();
-            if (inquiryTxt.equals("inquiry")) {
-                for (Integer i : resultQueue) {
-                    System.out.println(i);
-                }
-            }
+            calculator.inquiryResults(inquiryTxt, resultQueue);
 
             //계산 진행 묻기
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
