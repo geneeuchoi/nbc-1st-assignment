@@ -2,7 +2,7 @@ package calculator;
 
 public class Calculator {
     private int result = 0;
-    public int calculte(int num1, int num2, char operator) {
+    public void calculte(int num1, int num2, char operator) {
         switch (operator) {
             case '+':
                 result = num1 + num2;
@@ -23,6 +23,10 @@ public class Calculator {
             default:
                 System.out.println("연산자를 잘 못 입력하셨습니다.");
         }
+    }
+
+    public int getResult() {
         return result;
     }
+
 }
