@@ -8,6 +8,7 @@ public class ArithmeticCalculator extends Calculator{
     private Queue<Double> resultQueue;
 
     public ArithmeticCalculator(Queue<Double> resultQueue) {
+        super(new AddOperation(), new SubtractOperation(), new MultiplyOperation(), new DivideOperation());
         this.resultQueue = resultQueue;
         resultQueue.clear();
     }
@@ -15,20 +16,16 @@ public class ArithmeticCalculator extends Calculator{
     public void calculate(double num1, double num2, char operator) {
         switch (operator) {
             case '+':
-                result = num1 + num2;
+                result = add(num1, num2);
                 break;
             case '-':
-                result = num1 - num2;
+                result = subtract(num1, num2);
                 break;
             case '*':
-                result = num1 * num2;
+                result = multiply(num1, num2);
                 break;
             case '/':
-                if (num2 == 0) {
-                    System.out.println("분모에 0을 입력하셨습니다.");
-                } else {
-                    result = num1 / num2;
-                }
+                result = divide(num1, num2);
                 break;
             default:
                 System.out.println("연산자를 잘 못 입력하셨습니다.");

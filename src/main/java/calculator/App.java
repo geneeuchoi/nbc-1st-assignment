@@ -10,8 +10,8 @@ public class App {
         boolean flag = true;
         Queue<Double> arithmeticQueue = new LinkedList<>();
         Queue<Double> circleQueue = new LinkedList<>();
-        Calculator arithmeticCalculator = new ArithmeticCalculator(arithmeticQueue);
-        Calculator circleCalculator = new CircleCalculator(circleQueue);
+        ArithmeticCalculator arithmeticCalculator = new ArithmeticCalculator(arithmeticQueue);
+        CircleCalculator circleCalculator = new CircleCalculator(circleQueue);
 
         while (flag) {
             System.out.println("사칙 연산은 1, 원의 넓이는 2를 입력하세요.");
@@ -29,7 +29,7 @@ public class App {
                     char operator = sc.next().charAt(0);
 
                     //계산기 호출
-                    ((ArithmeticCalculator)arithmeticCalculator).calculate(num1, num2, operator);
+                    arithmeticCalculator.calculate(num1, num2, operator);
 
                     //결과 호출
                     System.out.println("결과: " + arithmeticCalculator.getResult());
@@ -52,11 +52,16 @@ public class App {
                     }
                     break;
 
+
+
+
+
+
                 case '2':
                     System.out.println("반지름을 입력하세요.");
                     double radius = sc.nextDouble();
 
-                    ((CircleCalculator)circleCalculator).calculateCircleArea(radius);
+                    circleCalculator.calculateCircleArea(radius);
 
                     System.out.println("결과: " + circleCalculator.getResult());
 
