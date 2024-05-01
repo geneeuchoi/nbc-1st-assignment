@@ -1,6 +1,6 @@
 package calculator;
 
-public abstract class Operator {
+public interface Operator {
 
-    public abstract double operate(double num1, double num2);
+    double operate(double num1, double num2);
 }

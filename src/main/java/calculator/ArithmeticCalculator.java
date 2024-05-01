@@ -5,41 +5,24 @@ import java.util.Queue;
 public class ArithmeticCalculator extends Calculator{
     private double result = 0;
 
-    private final AddOperation addOperator;
-    private final SubtractOperation subtractOperator;
-    private final MultiplyOperation multiplyOperator;
-    private final DivideOperation divideOperator;
-    private final ModOperation modOperator;
-
-    public ArithmeticCalculator(Queue<Double> resultQueue, AddOperation addOperator, SubtractOperation subtractOperator, MultiplyOperation multiplyOperator, DivideOperation divideOperator, ModOperation modOperator) {
+    public ArithmeticCalculator(Queue<Double> resultQueue) {
         super(resultQueue);
-        this.addOperator = addOperator;
-        this.subtractOperator = subtractOperator;
-        this.multiplyOperator = multiplyOperator;
-        this.divideOperator = divideOperator;
-        this.modOperator = modOperator;
     }
 
-    public void calculate(double num1, double num2, char operator) {
-        switch (operator) {
-            case '+':
-                result = addOperator.operate(num1, num2);
-                break;
-            case '-':
-                result = subtractOperator.operate(num1, num2);
-                break;
-            case '*':
-                result = multiplyOperator.operate(num1, num2);
-                break;
-            case '/':
-                result = divideOperator.operate(num1, num2);
-                break;
-            case '%':
-                result = modOperator.operate(num1, num2);
-                break;
-            default:
-                throw new IllegalArgumentException("연산자를 잘못 입력하셨습니다.");
-            }
+    public double calculate(double num1, double num2, char operator) {
+        result = operatorFactory(operator).operate(num1, num2);
+        return result;
+    }
+
+    private Operator operatorFactory(char operator) {
+        return switch (operator){
+            case '+' -> new AddOperation();
+            case '-' -> new SubtractOperation();
+            case '*' -> new MultiplyOperation();
+            case '/' -> new DivideOperation();
+            case '%' -> new ModOperation();
+            default -> throw new IllegalArgumentException("올바른 선택이 아닙니다.");
+        };
     }
 
     @Override

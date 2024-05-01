@@ -1,6 +1,6 @@
 package calculator;
 
-public class ModOperation extends Operator{
+public class ModOperation implements Operator{
     @Override
     public double operate(double num1, double num2) {
         if (num2 ==0) {

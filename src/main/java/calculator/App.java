@@ -8,13 +8,7 @@ public class App {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         boolean flag = true;
-        ArithmeticCalculator arithmeticCalculator = new ArithmeticCalculator(
-                new LinkedList<>(),
-                new AddOperation(),
-                new SubtractOperation(),
-                new MultiplyOperation(),
-                new DivideOperation(),
-                new ModOperation());
+        ArithmeticCalculator arithmeticCalculator = new ArithmeticCalculator(new LinkedList<>());
         CircleCalculator circleCalculator = new CircleCalculator(new LinkedList<>());
 
         while (flag) {
