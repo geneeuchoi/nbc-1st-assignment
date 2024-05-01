@@ -5,28 +5,37 @@ import java.util.Queue;
 public class ArithmeticCalculator extends Calculator{
     private double result = 0;
 
-    public ArithmeticCalculator(Queue<Double> resultQueue) {
-        super(new AddOperation(), new SubtractOperation(), new MultiplyOperation(), new DivideOperation(), new ModOperation());
-        this.resultQueue = resultQueue;
-        resultQueue.clear();
+    private final AddOperation addOperator;
+    private final SubtractOperation subtractOperator;
+    private final MultiplyOperation multiplyOperator;
+    private final DivideOperation divideOperator;
+    private final ModOperation modOperator;
+
+    public ArithmeticCalculator(Queue<Double> resultQueue, AddOperation addOperator, SubtractOperation subtractOperator, MultiplyOperation multiplyOperator, DivideOperation divideOperator, ModOperation modOperator) {
+        super(resultQueue);
+        this.addOperator = addOperator;
+        this.subtractOperator = subtractOperator;
+        this.multiplyOperator = multiplyOperator;
+        this.divideOperator = divideOperator;
+        this.modOperator = modOperator;
     }
 
     public void calculate(double num1, double num2, char operator) {
         switch (operator) {
             case '+':
-                result = add(num1, num2);
+                result = addOperator.operate(num1, num2);
                 break;
             case '-':
-                result = subtract(num1, num2);
+                result = subtractOperator.operate(num1, num2);
                 break;
             case '*':
-                result = multiply(num1, num2);
+                result = multiplyOperator.operate(num1, num2);
                 break;
             case '/':
-                result = divide(num1, num2);
+                result = divideOperator.operate(num1, num2);
                 break;
             case '%':
-                result = mod(num1, num2);
+                result = modOperator.operate(num1, num2);
                 break;
             default:
                 throw new IllegalArgumentException("연산자를 잘못 입력하셨습니다.");

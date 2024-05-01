@@ -10,7 +10,7 @@ public class CircleCalculator extends Calculator{
     //final = PI값은 변하면 안되므로 사용했다.
 
     public CircleCalculator (Queue<Double> resultQueue) {
-        super(new AddOperation(), new SubtractOperation(), new MultiplyOperation(), new DivideOperation(), new ModOperation());
+        super(resultQueue);
         this.resultQueue = resultQueue;
         resultQueue.clear();
     }
@@ -29,8 +29,8 @@ public class CircleCalculator extends Calculator{
     @Override
     public void inquiryResults(String inquiryTxt) {
         if (inquiryTxt.equals("inquiry")) {
-            for (Double i : resultQueue) {
-                System.out.println(i);
+            for (Double result : resultQueue) {
+                System.out.println(result);
             }
         }
     }

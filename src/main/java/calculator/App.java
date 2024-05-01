@@ -8,10 +8,14 @@ public class App {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         boolean flag = true;
-        Queue<Double> arithmeticQueue = new LinkedList<>();
-        Queue<Double> circleQueue = new LinkedList<>();
-        ArithmeticCalculator arithmeticCalculator = new ArithmeticCalculator(arithmeticQueue);
-        CircleCalculator circleCalculator = new CircleCalculator(circleQueue);
+        ArithmeticCalculator arithmeticCalculator = new ArithmeticCalculator(
+                new LinkedList<>(),
+                new AddOperation(),
+                new SubtractOperation(),
+                new MultiplyOperation(),
+                new DivideOperation(),
+                new ModOperation());
+        CircleCalculator circleCalculator = new CircleCalculator(new LinkedList<>());
 
         while (flag) {
             System.out.println("사칙 연산은 1, 원의 넓이는 2를 입력하세요.");
@@ -61,8 +65,22 @@ public class App {
 
                     System.out.println("결과: " + circleCalculator.getResult());
 
-                    System.out.println("저장된 원의 넓이 값들");
+                    //연산결과 확인
+                    System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력시 삭제)");
+                    removeTxt = sc.next();
+                    circleCalculator.removeResult(removeTxt);
+
+                    //큐에 저장된 연산 결과 조회
+                    System.out.println("저장된 연산 결과를 조회하시겠습니까?(inquiry 입력 시 조회)");
+                    inquiryTxt = sc.next();
                     circleCalculator.inquiryResults("inquiry");
+
+                    //계산 진행 묻기
+                    System.out.println("더 계산하시겠습니까? (exit 입력 시 종료)");
+                    exitTxt = sc.next();
+                    if (exitTxt.equals("exit")) {
+                        flag = false;
+                    }
                     break;
 
                 default:
